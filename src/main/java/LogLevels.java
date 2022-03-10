@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class LogLevels {
 
     public static String message(String logLine) {
@@ -5,10 +7,10 @@ public class LogLevels {
     }
 
     public static String logLevel(String logLine) {
-        throw new UnsupportedOperationException("Please implement the (static) LogLine.logLevel() method");
+        return logLine.split(":")[0].replaceAll("(\\[|\\])", "").toLowerCase(Locale.ROOT);
     }
 
     public static String reformat(String logLine) {
-        throw new UnsupportedOperationException("Please implement the (static) LogLine.reformat() method");
+        return String.format("%s (%s)", message(logLine), logLevel(logLine));
     }
 }
